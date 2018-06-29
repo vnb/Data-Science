@@ -116,15 +116,35 @@ def brute_force_cow_transport(cows,limit=10):
     transported on a particular trip and the overall list containing all the
     trips
     """
-    ships = []
-    ship_trips = {}
-    for item in (get_partitions(cows.values())):
-        for j in item:
-            if sum(j) <= limit:
-                ships.append(j)
-    for i in ships:
-        ship_trips[sum(i)] = []
-    return ship_trips
+    def count_sum(listofcows, cows):
+        weight = 0
+        for i in listofcows:
+            weight += cows[i]
+            if weight > limit:
+                return False
+                break
+        return True
+    cow_list = list(cows.keys())
+    
+    flight_list = []
+    all_partitions = get_partitions(cow_list)
+    
+    for i in all_partitions:
+        switch = 'green'
+        for j in i:
+            if count_sum(j, cows) == False:
+                switch = 'red'
+                break
+        if switch == 'green':
+            flight_list.append(i)
+            
+    trip_len_list = [len(i) for i in flight_list]
+    
+    for i in flight_list:
+        if len(i) == min(trip_len_list):
+            ideal_trip = i
+            break
+    return ideal_trip
 
         
 # Problem 3
@@ -141,9 +161,17 @@ def compare_cow_transport_algorithms():
     Returns:
     Does not return anything.
     """
-    # TODO: Your code here
-    pass
-    
+    cows = load_cows("ps1_cow_data.txt")
+    limit=10
+    start = time.time()
+    ans_a = greedy_cow_transport(cows, limit)
+    end = time.time()
+    print(end-start)
+    start = time.time()
+    ans_b = brute_force_cow_transport(cows, limit)    
+    end = time.time()
+    print(end-start)
+    return
 
 
 """
@@ -157,5 +185,5 @@ limit=10
 #print(cows)
 #
 #print(greedy_cow_transport(cows, limit))
-print(brute_force_cow_transport(cows, limit))
-
+#print(brute_force_cow_transport(cows, limit))
+print(compare_cow_transport_algorithms())
