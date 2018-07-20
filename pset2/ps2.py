@@ -391,7 +391,7 @@ def showPlot2(title, x_label, y_label):
 #     plot.
 #
 #       (... your call here ...)
-showPlot1('title', 'x_label', 'y_label')
+showPlot2('title', 'x_label', 'y_label')
 
 #
 # 2) Write a function call to showPlot2 that generates an appropriately-labeled

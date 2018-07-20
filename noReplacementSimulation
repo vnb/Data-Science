@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Jul 16 00:10:03 2018
+
+@author: varshabhat
+"""
+import random
+import numpy
+
+def noReplacementSimulation(numTrials):
+    '''
+    Runs numTrials trials of a Monte Carlo simulation
+    of drawing 3 balls out of a bucket containing
+    3 red and 3 green balls. Balls are not replaced once
+    drawn. Returns the a decimal - the fraction of times 3 
+    balls of the same color were drawn.
+    '''
+    # Your code here
+    bag = []
+    samecolor = 0
+    def fill_bag():
+        bag = []
+        for i in range(3):
+            bag.append('R')
+            bag.append('G')
+        return bag
+    def select_ball(bag):
+        return random.randint(0, len(bag)-1)
+    def check_color(selection):
+        for i in selection:
+            if not i == selection[0]:
+                return False
+        return True
+    tot_trials = numTrials
+    while tot_trials > 0:
+        selection = []
+        bag = fill_bag()
+        for i in range(3):
+            index = select_ball(bag)
+            selection.append(bag[index])
+            bag.pop(index)
+        if check_color(selection) == True:
+            samecolor += 1
+        tot_trials -=  1
+    return samecolor/numTrials
+print(noReplacementSimulation(100))
