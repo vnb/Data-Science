@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jul 20 18:38:54 2018
+
+@author: varshabhat
+"""
+
+import random
+import pylab
+import numpy as np
+
+''' 
+Begin helper code
+'''
+from ps3b_precompiled_36 import *
+
+
+simulationWithDrug(1, 20, 1.0, 0.0, {"guttagonol": True}, 1.0, 5)
+simulationWithDrug(1, 10, 1.0, 0.0, {}, 1.0, 5)
+simulationWithDrug(75, 100, .8, 0.1, {"guttagonol": True}, 0.8, 1)
+simulationWithDrug(75, 100, .8, 0.1, {"guttagonol": True}, 0.8, 1)

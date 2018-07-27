@@ -10,12 +10,12 @@ import pylab
 ## Comment/uncomment the relevant lines, depending on which version of Python you have
 ##################
 
-# For Python 3.5:
-from ps2_verify_movement35 import testRobotMovement
+## For Python 3.5:
+#from ps2_verify_movement35 import testRobotMovement
 # If you get a "Bad magic number" ImportError, you are not using Python 3.5 
 
 # For Python 3.6:
-#from ps2_verify_movement36 import testRobotMovement
+from ps2_verify_movement36 import testRobotMovement
 # If you get a "Bad magic number" ImportError, you are not using Python 3.6
 
 
